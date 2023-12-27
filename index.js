@@ -10,6 +10,11 @@ const { saveUser, checkUser} = require('./db/collection/user')
 
 app.use(express.json())
 
+app.get('/', (req, res) => {
+    const clientIP = req.ip;
+    res.send(`Client IP address: ${clientIP}`);
+  });
+
 app.post('/user', async (req, res) => {
     const { uid, email, password } = req.body;
     await saveUser({ uid, email, password })
