@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 app.use(cors())
+const port = process.env.PORT || 8080;
 
 const { addFavorite, getFavorites, isFavorite } = require('./db/collection/favorite')
 const { addComment, getComments } = require('./db/collection/comment')
@@ -51,6 +52,6 @@ app.get('/comment', async (req, res) => {
     res.status(200).send(comments)
 })
 
-app.listen(80, () => {
+app.listen(port, () => {
     console.log('listening on 8080')
 })
